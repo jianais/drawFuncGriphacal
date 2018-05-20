@@ -8,7 +8,7 @@
 	<script src="../js/util.js"></script>
   </head>
   <body>
-	<div ng-app="myApp" ng-controller="myCtrl">
+	<div ng-app="myApp" ng-controller="myCtrl" ng-init="draw()">
 	  <div>
 		函数方程: <input type="text" ng-model="funcExp" placeholder="输入函数表达式">
 		区间：
@@ -22,8 +22,8 @@
 		功能列表：
 		<button ng-click="narrow()">缩小</button>
 		<button ng-click="enlarge()">放大</button>
-		<!--<button ng-click="stop()">暂停</button>
-		<button ng-click="start()">旋转</button>-->
+		<button ng-click="pause()">暂停</button>
+		<button ng-click="resume()">旋转</button>
 	  </div>
 	  
 	  <p>说明：画出来的图形是在纵坐标z为0的，所以在输入表达式的时候，只输入x和y之间的关系，主要是还没想到该怎么计算表达式。比如：x*x+y*y</p>

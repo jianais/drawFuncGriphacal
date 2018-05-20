@@ -2,6 +2,8 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope){
 	var camera, scene, light, renderer, width, height, line;
 	var funcExpr = "";
+	//初始图像函数
+	$scope.funcExp = "x*x+x+y*y+y";
 	//区间默认值
 	var minValue = -10;
 	$scope.minValue = -10;
@@ -44,9 +46,11 @@ app.controller('myCtrl', function($scope){
 		camera.position.z -= 20;
 		//console.log(camera.position);
 	}
+	//暂停
 	$scope.pause = function(){
 		cancelAnimationFrame(timer);
 	}
+	//旋转
 	$scope.resume = function(){
 		render();
 	}

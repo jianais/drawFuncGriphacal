@@ -10,18 +10,26 @@ app.controller('myCtrl', function($scope){
 	//精度默认值
 	var accuracy = 0.05;
 	$scope.accuracy = 0.05;
+	//用来标识是否第一次画
+	var index = 0;
 	$scope.draw = function(){
 		funcExpr = $scope.funcExp;
 		minValue = eval($scope.minValue);
 		maxValue = eval($scope.maxValue);
 		accuracy = eval($scope.accuracy);
 		//console.log(funcExpr);
-		initThree();
-		initScene();
-		initCamera();
-		initLight();
+		if(index == 0){
+			initThree();
+			initScene();
+			initCamera();
+			initLight();
+		}else{
+			//如果不是第一次，初始化场景
+			initScene();
+		}
 		initObject();
 		render();
+		index++;
 	}
 	$scope.narrow = function(){
 		//camera.position.x += 5;
@@ -84,6 +92,7 @@ app.controller('myCtrl', function($scope){
 			for(var x = minValue;x < maxValue;x = x + accuracy){
 				for(var y = minValue;y < maxValue;y = y + accuracy){
 					//把输入的表达式中的x和y用相应的数字替换掉
+					//console.log(funcExpr.replaceAll("x", x).replaceAll("y", y));
 					z = eval(funcExpr.replaceAll("x", x).replaceAll("y", y));
 					geometry.vertices.push(new THREE.Vector3(x,y,z));
 				}

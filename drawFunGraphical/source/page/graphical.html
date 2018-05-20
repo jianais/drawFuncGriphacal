@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<script src="../../outSource/three.js"></script>
+	<script src="../../outSource/angular.min.js"></script>
+	<script src="../js/draw.js"></script>
+	<script src="../js/util.js"></script>
+  </head>
+  <body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+	  <div>
+		函数方程: <input type="text" ng-model="funcExp" placeholder="输入函数表达式">
+		区间：
+		<input type="text" ng-model="minValue" style="width:60px">~
+		<input type="text" ng-model="maxValue" style="width:60px">
+		精度：
+		<input type="text" ng-model="accuracy" style="width:60px">
+		<button ng-click="draw()">提交</button>
+	  </div>
+	  <div style="margin-top:10px">
+		功能列表：
+		<button ng-click="narrow()">缩小</button>
+		<button ng-click="enlarge()">放大</button>
+		<!--<button ng-click="stop()">暂停</button>
+		<button ng-click="start()">旋转</button>-->
+	  </div>
+	  
+	  <p>说明：画出来的图形是在纵坐标z为0的，所以在输入表达式的时候，只输入x和y之间的关系，主要是还没想到该怎么计算表达式。比如：x*x+y*y</p>
+	  <div id="canvas-frame" style="border:1px solid #000000;width:100%;height:650px"></div>
+	</div>
+	
+  </body>
+</html>

@@ -12,6 +12,7 @@ app.controller('myCtrl', function($scope){
 	$scope.accuracy = 0.05;
 	//用来标识是否第一次画
 	var index = 0;
+	var timer;
 	$scope.draw = function(){
 		funcExpr = $scope.funcExp;
 		minValue = eval($scope.minValue);
@@ -42,6 +43,12 @@ app.controller('myCtrl', function($scope){
 		//camera.position.y -= 5;
 		camera.position.z -= 20;
 		//console.log(camera.position);
+	}
+	$scope.pause = function(){
+		cancelAnimationFrame(timer);
+	}
+	$scope.resume = function(){
+		render();
 	}
 	function initThree(){
 		debugger;
@@ -124,6 +131,6 @@ app.controller('myCtrl', function($scope){
 		line.rotation.x += 0.01;
 		line.rotation.y += 0.01;
 		renderer.render(scene, camera);
-		requestAnimationFrame(render);
+		timer = requestAnimationFrame(render);
 	}
 });
